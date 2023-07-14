@@ -69,17 +69,20 @@ class Cliente50:
 
     def clienteRecibe(self, llego):
         if "evalua" in llego.strip():
+            partes = llego.split(" ", 2)
 
-            pattern = re.compile(r"(\w+) (\d+) (.+)")
-            matcher = pattern.match(llego)
+            if len(partes) == 3:
+                # Obtener las partes separadas
+                parte1 = partes[0]
+                epoca = partes[1]
+                wNews = partes[2]
 
-            if matcher:
-                parte1 = matcher.group(1)
-                epoca = matcher.group(2)
-                wNews = matcher.group(3)
+                numerosString = wNews.replace("[", "").replace("]", "")
 
-                numerosString = wNews[1:-1]
+                # Dividir la cadena en subcadenas individuales
                 numerosArray = numerosString.split(",")
+
+                # Crear un nuevo arreglo de tipo float[]
                 wNew = [float(num.strip()) for num in numerosArray]
 
                 self.procesar(int(epoca), wNew)
@@ -97,7 +100,7 @@ class Cliente50:
         error = 9999
 
         for _ in range(6):
-            rna01 = Rna01(7, 6, 1, epoca, wNew)
+            rna01 = Rna01(7, 6, 1, epoca, list(wNew))
             rna01s.append(rna01)
             thread = threading.Thread(target=rna01.run)
             threads.append(thread)

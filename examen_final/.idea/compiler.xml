@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="PC_4_concurrentes" />
         <module name="pc4" />
+        <module name="PC_4_concurrentes" />
         <module name="parcial" />
+        <module name="examen_final" />
       </profile>
     </annotationProcessing>
   </component>

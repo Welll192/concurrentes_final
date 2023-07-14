@@ -60,14 +60,15 @@ public class Servidor50 {
     void ServidorRecibe(String llego) {
 
 
-        Pattern pattern = Pattern.compile("([0-9.]+)\\s(.+)"); // Dígitos y punto decimal para la primera parte
-        Matcher matcher = pattern.matcher(llego);
+        String[] parts = llego.split("\\[", 2);
+
         double error = 9999;
         double[] wPesos;
-        if (matcher.matches()) {
+
+        if (parts.length==2) {
             // Obtener las partes separadas
-            double errorCli =Double.parseDouble(matcher.group(1));
-            String wPesosCli = matcher.group(2);
+            double errorCli =Double.parseDouble(parts[0].trim());
+            String wPesosCli = parts[1];
             almacenaError[contarcliente] = errorCli;
             errorPeso.put(errorCli,wPesosCli);
             contarcliente++;

@@ -40,15 +40,14 @@ class Cliente50 {
     void ClienteRecibe(String llego) {
 
         if (llego.trim().contains("evalua")) {
+            System.out.println(llego);
+            String[] partes = llego.split("\\s+",3);
 
-            Pattern pattern = Pattern.compile("(\\w+) (\\d+) (.+)");
-            Matcher matcher = pattern.matcher(llego);
-
-            if (matcher.matches()) {
+            if (partes.length==3) {
                 // Obtener las partes separadas
-                String parte1 = matcher.group(1);
-                String epoca = matcher.group(2);
-                String wNews = matcher.group(3);
+                String parte1 = partes[0];
+                String epoca = partes[1];
+                String wNews = partes[2];
 
                 String numerosString = wNews.substring(1, wNews.length() - 1);
 

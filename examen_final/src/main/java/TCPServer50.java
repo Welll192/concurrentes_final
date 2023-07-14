@@ -66,7 +66,7 @@ public class TCPServer50 {
     public void sendMessageTCPServerRango(int epoca, double[] wNew ){
 
         for (int i = 1; i <= nrcli; i++) {
-
+            System.out.println(Arrays.toString(wNew));
             sendclis[i].sendMessage("evalua " + epoca + " "+ Arrays.toString(wNew));
 
         }
